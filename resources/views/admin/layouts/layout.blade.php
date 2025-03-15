@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | AdminKit Demo</title>
+	<title>@yield('admin_page_title')</title>
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -30,24 +30,117 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Main
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
+					<li class="sidebar-item {{request()->routeIs('adminDashboard')?'active':''}}">
+						<a class="sidebar-link" href="/admin/dashboard">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
+
+
+			
+					</li>
+					<li class="sidebar-header">
+						Catagory
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+					<li class="sidebar-item {{request()->routeIs('catagory.create')?'active':''}}">
+						<a class="sidebar-link" href="/admin/catagory/create">
+              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Catagory</span>
+            </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('catagory.manage')?'active':''}}">
+						<a class="sidebar-link" href="/admin/catagory/manage">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Catagory</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+					<li class="sidebar-header">
+						History
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('admin.cart.history')?'active':''}}">
+						<a class="sidebar-link" href="/admin/cart/history">
+              <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Cart History</span>
+            </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('admin.order.history')?'active':''}}">
+						<a class="sidebar-link" href="/admin/order/history">
+              <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Order history</span>
+            </a>
+					</li>
+
+
+				</li>
+				<li class="sidebar-header">
+					Sub-Catagory
+				</li>
+
+				<li class="sidebar-item {{request()->routeIs('subcatagory.create')?'active':''}}">
+					<a class="sidebar-link" href="/admin/subcatagory/create">
+		  <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create SubCatagory</span>
+		</a>
+				</li>
+				<li class="sidebar-item {{request()->routeIs('subcatagory.manage')?'active':''}}">
+					<a class="sidebar-link" href="/admin/subcatagory/manage">
+		  <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage SubCatagory</span>
+		</a>
+				</li>
+
+			</li>
+			<li class="sidebar-header">
+				Product Attribute
+			</li>
+
+			<li class="sidebar-item {{request()->routeIs('productattribute.create')?'active':''}}">
+				<a class="sidebar-link" href="/admin/productattribute/create">
+	  <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create ProductAttribute</span>
+	</a>
+			</li>
+			<li class="sidebar-item {{request()->routeIs('productattribute.manage')?'active':''}}">
+				<a class="sidebar-link" href="/admin/productattribute/manage">
+	  <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage ProductAttribute</span>
+	</a>
+
+
+</li>
+<li class="sidebar-header">
+	Product Discount
+</li>
+
+<li class="sidebar-item {{request()->routeIs('discount.create')?'active':''}}">
+	<a class="sidebar-link" href="/admin/discount/create">
+<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Discount</span>
+</a>
+</li>
+<li class="sidebar-item {{request()->routeIs('discount.manage')?'active':''}}">
+	<a class="sidebar-link" href="/admin/discount/manage">
+<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Dicount</span>
+</a>
+</li>
+
+
+</li>
+<li class="sidebar-header">
+	Product
+</li>
+
+<li class="sidebar-item {{request()->routeIs('product.manage')?'active':''}}">
+	<a class="sidebar-link" href="/admin/product/manage">
+<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Manage Product</span>
+</a>
+</li>
+<li class="sidebar-item {{request()->routeIs('product.review.manage')?'active':''}}">
+	<a class="sidebar-link" href="/admin/product/review/manage">
+<i class="align-middle" data-feather="star"></i> <span class="align-middle">Manage Reveiw Product</span>
+</a>
+</li>
+
+			</li>
+					<li class="sidebar-item {{request()->routeIs('admin.settings')?'active':''}}">
+						<a class="sidebar-link" href="/admin/settings">
+              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Setting</span>
             </a>
 					</li>
 
@@ -57,7 +150,7 @@
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-blank.html">
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
             </a>
