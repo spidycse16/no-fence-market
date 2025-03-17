@@ -1,7 +1,7 @@
 @extends('vendor.layouts.layout')
 @section('seller_page_title')
-Dashboard
+Order History
 @endsection
 @section('seller_layout')
-Dashboard
+ORder History
 @endsection

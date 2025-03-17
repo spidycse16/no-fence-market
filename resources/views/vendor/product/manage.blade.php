@@ -1,7 +1,7 @@
 @extends('vendor.layouts.layout')
 @section('seller_page_title')
-Dashboard
+SEller Manage Product
 @endsection
 @section('seller_layout')
-Dashboard
+SEller manage product
 @endsection

@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCatagoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\VendorMainController;
+use App\Http\Controllers\Seller\VendorProductController;
+use App\Http\Controllers\Seller\VendorStoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,14 +58,34 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
             });
         });
 });
+
+//seller routes
+Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
+    //all the admin pages will have /vendor/___________
+        Route::prefix('vendor')->group(function(){
+
+            Route::controller(VendorMainController::class)->group(function(){
+                Route::get('/dashboard','index')->name('vendorDashboard');
+                Route::get('/order/history','orderHistory')->name('vendor.order.history');
+                
+            });
+
+            Route::controller(VendorProductController::class)->group(function(){
+                Route::get('/product/create','index')->name('vendor.product.create');
+                Route::get('/product/manage','manage')->name('vendor.product.manage');
+            });
+            Route::controller(VendorStoreController::class)->group(function(){
+                Route::get('/store/create','index')->name('vendor.store.create');
+                Route::get('/store/manage','manage')->name('vendor.store.manage');
+            });
+            
+
+        });
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified','rolemanager:customer'])->name('dashboard');
 
-
-Route::get('/vendor/dashboard', function () {
-    return view('vendor.dashboard');
-})->middleware(['auth', 'verified','rolemanger:vendor'])->name('vendorDashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
