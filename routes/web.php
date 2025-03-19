@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCatagoryController;
+use App\Http\Controllers\Customer\CustomerMainController;
+use App\Http\Controllers\MasterCatagoryController;
+use App\Http\Controllers\MasterSubcatagoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\VendorMainController;
 use App\Http\Controllers\Seller\VendorProductController;
@@ -56,10 +59,25 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
                 Route::get('/discount/create','index')->name('discount.create');
                 Route::get('/discount/manage','manage')->name('discount.manage');
             });
+
+            Route::controller(MasterCatagoryController::class)->group(function(){
+                Route::POST('/store/catagory','storeCatagory')->name('store.catagory');
+                Route::GET('/catagory/{id}','showCat')->name('show.catagory');
+                Route::PUT('/catagory/update/{id}','updateCat')->name('update.catagory');
+                Route::delete('/catagory/delete/{id}','deleteCat')->name('delete.catagory');
+
+            });
+
+            Route::controller(MasterSubcatagoryController::class)->group(function(){
+                Route::POST('/store/subcatagory','storeSubcat')->name('store.subcatagory');
+                
+            });
+
+
         });
 });
 
-//seller routes
+//vendor routes
 Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
     //all the admin pages will have /vendor/___________
         Route::prefix('vendor')->group(function(){
@@ -82,9 +100,22 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
 
         });
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified','rolemanager:customer'])->name('dashboard');
+
+Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function(){
+    //all the admin pages will have /user/___________
+        Route::prefix('user')->group(function(){
+
+            Route::controller(CustomerMainController::class)->group(function(){
+                Route::get('/dashboard','index')->name('customerDashboard');
+                Route::get('/order/history','orderHistory')->name('customer.order.history');
+                Route::get('/setting/payment','payment')->name('customer.payment');
+                Route::get('/affiliate','affiliate')->name('customer.affiliate');
+                
+            });
+   
+
+        });
+});
 
 
 Route::middleware('auth')->group(function () {
@@ -92,5 +123,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//invalidate a session
+Route::get('/flush', function () {
+    Session::flush();
+    return redirect('/login');
+    })->name('flush');
 
 require __DIR__.'/auth.php';

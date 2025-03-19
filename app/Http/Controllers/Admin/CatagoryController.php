@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Catagory;
 use Illuminate\Http\Request;
 
 class CatagoryController extends Controller
@@ -13,6 +14,7 @@ class CatagoryController extends Controller
     }
     public function manage()
     {
-        return view('admin.catagory.manage');
+        $catagories=Catagory::all();
+        return view('admin.catagory.manage',compact('catagories'));
     }
 }
