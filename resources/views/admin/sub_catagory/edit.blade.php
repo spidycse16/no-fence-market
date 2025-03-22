@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 @section('admin_page_title')
-Create Dafault Attribute - Admin
+Edit SubCategory - Admin
 @endsection
 @section('admin_layout')
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title mb-0">Create Dafault Attribute</h5>
+        <h5 class="card-title mb-0">Edit SubCategory</h5>
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -17,17 +17,18 @@ Create Dafault Attribute - Admin
             </ul>
         </div>
         @endif
-        @if(@session('success'))
+        @if(@session('message'))
         <div class="alert alert-success">
-            {{session('success')}}
+            {{session('message')}}
         </div>
         @endif
 
-        <form action="{{route('attribute.create')}}" method="POST">
+        <form action="{{route('update.subcatagory',$subcatagory_info->id)}}" method="POST">
         @csrf
-        <label for="attribute_value" class="fw-bold mb-2">Enter Attribute value :</label>
-        <input type="text" name="attribute value" class="form-control" placeholder="XL">
-        <button type="submit"  class="btn btn-primary w-100 mt-3">Add Attribute</button>
+        @method('PUT')
+        <label for="subcatagory_name" class="fw-bold mb-2">SubCategory Name :</label>
+        <input type="text" name="subcatagory_name" class="form-control" value="{{$subcatagory_info->subcatagory_name}}">
+        <button type="submit"  class="btn btn-primary w-100 mt-3">Update SubCategory</button>
     </form>
     </div>
 </div>

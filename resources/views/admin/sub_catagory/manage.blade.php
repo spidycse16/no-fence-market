@@ -30,8 +30,8 @@ Manage SubCategory - Admin
                         <td>{{$subcat->subcatagory_name}}</td>
                         <td>{{$subcat->catagory->catagory_name}}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Edit</a>
-                            <form action="" method="POST" style="display: inline;">
+                            <a href="{{route('show.subcatagory',$subcat->id)}}" class="btn btn-primary">Edit</a>
+                            <form action="{{route('delete.subcatagory',$subcat->id)}}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete</button>

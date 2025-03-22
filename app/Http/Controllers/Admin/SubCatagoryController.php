@@ -19,5 +19,6 @@ class SubCatagoryController extends Controller
         $subcatagories=Subcatagory::all();
         return view('admin.sub_catagory.manage',compact('subcatagories'));
     }
+    
 
 }

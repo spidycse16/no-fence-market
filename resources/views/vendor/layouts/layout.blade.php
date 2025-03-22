@@ -14,10 +14,11 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>@yield('seller_page_title')</title>
+	<title>@yield('vendor_page_title')</title>
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">Seller Dashboard</span>
+          <span class="align-middle">Vendor Dashboard</span>
         </a>
 
 		<ul class="sidebar-nav">
@@ -72,6 +73,15 @@
 				<a class="sidebar-link" href="/vendor/store/manage">
 	  <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Manage Store</span>
 	</a>
+			</li>
+
+			<li class="sidebar-item">
+				<a class="sidebar-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					<i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span>
+				</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>
 			</li>
 		</ul>
 			
@@ -255,9 +265,7 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Blank Page</h1>
-
-					@yield('seller_layout')
+					@yield('vendor_layout')
 
 				</div>
 			</main>

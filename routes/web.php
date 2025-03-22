@@ -53,6 +53,10 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
             Route::controller(ProductAttributeController::class)->group(function(){
                 Route::get('/productattribute/create','index')->name('productattribute.create');
                 Route::get('/productattribute/manage','manage')->name('productattribute.manage');
+                Route::POST('/default/attribute/create','createAttribute')->name('attribute.create');
+                Route::GET('/attribute/{id}','showAttribute')->name('show.attribute');
+                Route::PUT('/attribute/update/{id}','updateAttribute')->name('update.attribute');
+                Route::delete('/attribute/delete/{id}','deleteAttribute')->name('delete.attribute');
             });
 
             Route::controller(ProductDiscountController::class)->group(function(){
@@ -70,6 +74,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
 
             Route::controller(MasterSubcatagoryController::class)->group(function(){
                 Route::POST('/store/subcatagory','storeSubcat')->name('store.subcatagory');
+                Route::GET('/subcatagory/{id}','showSubcat')->name('show.subcatagory');
+                Route::PUT('/subcatagory/update/{id}','updateSubcat')->name('update.subcatagory');
+                Route::delete('/subcatagory/delete/{id}','deleteSubcat')->name('delete.subcatagory');
                 
             });
 
@@ -92,9 +99,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
                 Route::get('/product/create','index')->name('vendor.product.create');
                 Route::get('/product/manage','manage')->name('vendor.product.manage');
             });
+
             Route::controller(VendorStoreController::class)->group(function(){
                 Route::get('/store/create','index')->name('vendor.store.create');
                 Route::get('/store/manage','manage')->name('vendor.store.manage');
+                Route::POST('/store/publish','publish')->name('store.publish');
+                Route::get('/show/store/{id}/','edit')->name('store.edit');
+                Route::delete('/delete/store/{id}', 'delete')->name('store.destroy');
+                Route::put('/update/store/{id}','update')->name('store.update');
+
             });
             
 
