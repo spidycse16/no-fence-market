@@ -1,7 +1,7 @@
 @extends('vendor.layouts.layout')
-@section('seller_page_title')
+@section('vendor_page_title')
 Dashboard
 @endsection
-@section('seller_layout')
+@section('vendor_layout')
 Dashboard
 @endsection

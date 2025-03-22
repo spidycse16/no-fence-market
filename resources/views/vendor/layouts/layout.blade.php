@@ -18,7 +18,9 @@
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	@livewireStyles
 </head>
 
 <body>
@@ -85,18 +87,6 @@
 			</li>
 		</ul>
 			
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -125,11 +115,7 @@
 											<div class="col-2">
 												<i class="text-danger" data-feather="alert-circle"></i>
 											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
+											
 										</div>
 									</a>
 									<a href="#" class="list-group-item">
@@ -274,9 +260,7 @@
 				<div class="container-fluid">
 					<div class="row text-muted">
 						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy;
-							</p>
+						<h5>NoFenceMarker - An Open D2C Marketplace</h5>
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
@@ -301,7 +285,7 @@
 	</div>
 
 	<script src="{{asset('admin_asset/js/app.js')}}"></script>
-
+	@livewireScripts
 </body>
 
 </html>
