@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCatagoryController;
+use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\MasterCatagoryController;
 use App\Http\Controllers\MasterSubcatagoryController;
@@ -124,7 +125,17 @@ Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function(
                 Route::get('/order/history','orderHistory')->name('customer.order.history');
                 Route::get('/setting/payment','payment')->name('customer.payment');
                 Route::get('/affiliate','affiliate')->name('customer.affiliate');
-                
+                Route::get('/products','products')->name('customer.products');
+                Route::get('/products/{id}','show')->name('customer.product.show');
+                Route::get('/search', 'search')->name('customer.search');
+                Route::get('/search/autocomplete', 'autocomplete')->name('customer.search.autocomplete');
+            });
+
+            Route::controller(CartController::class)->group(function(){
+                Route::POST('/cart/add','add')->name('cart.add');
+                Route::get('/cart', 'index')->name('customer.cart');
+                Route::post('/cart/update', 'update')->name('cart.update');
+                Route::post('/cart/remove', 'remove')->name('cart.remove');
             });
    
 

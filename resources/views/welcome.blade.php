@@ -303,7 +303,7 @@
                 <div class="nav-links">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="btn btn-outline">Dashboard</a>
+                            <a href="{{ url('/user/dashboard') }}" class="btn btn-outline">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-outline">Log in</a>
                             @if (Route::has('register'))
@@ -321,7 +321,7 @@
                 <p class="hero-subtitle">NoFenceMarket is a revolutionary direct-to-consumer marketplace where innovative products meet their perfect customers—without the middleman.</p>
                 <div class="cta-buttons">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-cta">Go to Dashboard</a>
+                        <a href="{{ url('/user/dashboard') }}" class="btn btn-primary btn-cta">Go to Dashboard</a>
                     @else
                         <a href="{{ route('register') }}" class="btn btn-primary btn-cta">Join NoFenceMarket</a>
                         <a href="{{ route('login') }}" class="btn btn-outline btn-cta">Sign In</a>
