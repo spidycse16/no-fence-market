@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\VendorApproval;
 
 class VendorMainController extends Controller
 {
@@ -16,4 +17,5 @@ class VendorMainController extends Controller
     {
         return view('vendor.orderHistory');
     }
+  
 }

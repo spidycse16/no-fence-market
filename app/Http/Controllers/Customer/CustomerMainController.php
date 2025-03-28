@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\VendorApproval;
 
 class CustomerMainController extends Controller
 {
@@ -116,4 +117,52 @@ class CustomerMainController extends Controller
             ->with(['catagory', 'subCatagory', 'store', 'images'])
             ->get();
     }
+
+    public function vendorRegister()
+    {
+        return view('customer.register_vendor');
+    }
+    public function profile()
+    {
+        return view('customer.profile');
+    }
+
+    public function vendorApprove(Request $request)
+    {
+     $validatedData = $request->validate([
+         'full_name' => 'required|string|max:255',
+         'nid_number' => 'required|string|unique:vendor_approvals,nid_number',
+         'email' => 'required|email|unique:users,email',
+         'personal_phone' => 'required|string|max:20',
+         'mobile_banking_no' => 'required|string|max:20',
+         'business_type' => 'required|in:entrepreneur,shopkeeper,farmer,businessman,home_baker,handicraft_artisan,freelancer,manufacturer,service_provider,other',
+         'nid_front_page' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+         'tin_number' => 'string|max:50',
+         'terms_agreement' => 'accepted'
+     ]);
+ 
+     // Store NID front page document
+     $nidDocumentPath = $request->file('nid_front_page')->store('vendor_nid_documents', 'public');
+ 
+     // Create vendor approval request
+     $vendorRequest = VendorApproval::create([
+         'user_id' => auth()->id(),
+         'full_name' => $validatedData['full_name'],
+         'nid_number' => $validatedData['nid_number'],
+         'email' => $validatedData['email'],
+         'personal_phone' => $validatedData['personal_phone'],
+         'mobile_banking_no' => $validatedData['mobile_banking_no'],
+         'business_type' => $validatedData['business_type'],
+         'nid_document_path' => $nidDocumentPath,
+         'tin_number' => $validatedData['tin_number'],
+         'status' => 'pending'
+     ]);
+ 
+     // Optional: Send notification to admin
+     // Notification::send($admin, new VendorRegistrationRequest($vendorRequest));
+ 
+     return redirect()->back()->with('success', 'Your vendor registration request has been submitted successfully!');
+ 
+    }
+    
 }

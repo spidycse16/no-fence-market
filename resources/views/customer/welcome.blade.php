@@ -190,16 +190,7 @@
                 </select>
             </div>
 
-            <!-- Store -->
-            <div>
-                <label class="block text-gray-700 mb-2">Store</label>
-                <select name="store" class="w-full p-2 border rounded text-black focus:outline-none focus:border-blue-500">
-                    <option value="">All Stores</option>
-                    @foreach(\App\Models\Store::all() as $store)
-                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
-                    @endforeach
-                </select>
-            </div>
+
 
             <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Apply Filters</button>
         </form>

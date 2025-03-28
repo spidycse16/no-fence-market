@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminMainController;
+use App\Http\Controllers\Admin\ApproveController;
 use App\Http\Controllers\Admin\CatagoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -81,6 +82,13 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
                 
             });
 
+            Route::controller(ApproveController::class)->group(function(){
+                Route::get('/approve/show','show')->name('admin.vendor.index');
+                Route::patch('/{id}/approve', 'approve')->name('admin.vendor.approve');
+                Route::delete('/{id}/reject', 'reject')->name('admin.vendor.reject');
+                
+            });
+
 
         });
 });
@@ -93,6 +101,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
             Route::controller(VendorMainController::class)->group(function(){
                 Route::get('/dashboard','index')->name('vendorDashboard');
                 Route::get('/order/history','orderHistory')->name('vendor.order.history');
+                
                 
             });
 
@@ -117,7 +126,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
 });
 
 Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function(){
-    //all the admin pages will have /user/___________
+    //all the  pages will have /user/___________
         Route::prefix('user')->group(function(){
 
             Route::controller(CustomerMainController::class)->group(function(){
@@ -129,6 +138,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function(
                 Route::get('/products/{id}','show')->name('customer.product.show');
                 Route::get('/search', 'search')->name('customer.search');
                 Route::get('/search/autocomplete', 'autocomplete')->name('customer.search.autocomplete');
+                Route::get('/profile','profile')->name('user.profile');
+                Route::get('/register','vendorRegister')->name('vendor.register');
+                Route::POST('/approve','vendorApprove')->name('vendor.approve');
             });
 
             Route::controller(CartController::class)->group(function(){

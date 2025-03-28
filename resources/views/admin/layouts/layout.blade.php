@@ -39,48 +39,55 @@
                     <li class="sidebar-header">Category</li>
                     <li class="sidebar-item {{ request()->routeIs('catagory.create') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/catagory/create">
-                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Category</span>
+                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ request()->routeIs('catagory.manage') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/catagory/manage">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Category</span>
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
                         </a>
                     </li>
 
                     <li class="sidebar-header">Sub-Category</li>
                     <li class="sidebar-item {{ request()->routeIs('subcatagory.create') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/subcatagory/create">
-                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Sub-Category</span>
+                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ request()->routeIs('subcatagory.manage') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/subcatagory/manage">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Sub-Category</span>
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
                         </a>
                     </li>
 
                     <li class="sidebar-header">Product Attribute</li>
                     <li class="sidebar-item {{ request()->routeIs('productattribute.create') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/productattribute/create">
-                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Product Attribute</span>
+                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ request()->routeIs('productattribute.manage') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/productattribute/manage">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Product Attribute</span>
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
                         </a>
                     </li>
 
                     <li class="sidebar-header">Product Discount</li>
                     <li class="sidebar-item {{ request()->routeIs('discount.create') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/discount/create">
-                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create Discount</span>
+                            <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ request()->routeIs('discount.manage') ? 'active' : '' }}">
                         <a class="sidebar-link" href="/admin/discount/manage">
-                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage Discount</span>
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">Approve Vendors</li>
+                    <li class="sidebar-item {{ request()->routeIs('need.approve') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="/admin/approve/show">
+                            <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Approve Vendor</span>
                         </a>
                     </li>
 

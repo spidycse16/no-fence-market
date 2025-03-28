@@ -1,7 +1,4 @@
-@extends('customer.layouts.layout')
-@section('customer_page_title')
+@extends('layouts.customer')
+@section('content')
 My Profile
-@endsection
-@section('customer_layout')
-<h3>My Profile</h3>
 @endsection

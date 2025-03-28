@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/customer.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +16,8 @@
                 <span class="text-2xl font-bold">No Fence Market</span>
             </a>
 
-            <!-- Search Bar -->
-            <form action="{{ route('customer.search') }}" method="GET" class="flex-1 mx-0 md:mx-6 mb-4 md:mb-0 w-full md:w-auto relative">
+            <!-- Search Bar  -->
+            <form action="{{ route('customer.search') }}" method="GET" class="flex-1 mx-0 md:mx-6 mb-4 md:mb-0 w-full md:w-1/2 relative">
                 <div class="flex">
                     <input 
                         type="text" 
@@ -61,8 +60,10 @@
                 </div>
                 <a href="{{ route('customer.products') }}" class="hover:text-gray-200">Products</a>
                 <a href="{{ route('customer.cart') }}" class="hover:text-gray-200">Cart ({{ session('cart', []) ? count(session('cart')) : 0 }})</a>
+                <!-- New Become a Vendor Option -->
+                <a href="{{ route('vendor.register') }}" class="hover:text-gray-200">Become a Vendor</a>
                 @auth
-                    <a href="/profile" class="hover:text-gray-200">{{ auth()->user()->name }}</a>
+                    <a href="/user/profile" class="hover:text-gray-200">{{ auth()->user()->name }}</a>
                     <form action="/logout" method="POST" class="inline">
                         @csrf
                         <button type="submit" class="hover:text-gray-200">Logout</button>
